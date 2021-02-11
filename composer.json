@@ -1,0 +1,19 @@
+{
+    "name": "arsoft-modules/code-generator",
+    "description": "code generator based on database table",
+    "type": "library",
+    "license": "-",
+    "authors": [
+        {
+            "name": "Rizqon",
+            "email": "m.rum.rowi.r@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "autoload": {
+        "psr-4": {
+            "ArsoftModules\\CodeGenerator\\": "src/"
+        }
+    },
+    "require": {}
+}
