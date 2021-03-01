@@ -1,18 +1,18 @@
 {
-    "name": "arsoft-modules/code-generator",
-    "description": "code generator based on database table",
+    "name": "arsoft-modules/nota-generator",
+    "description": "nota generator using table and database",
     "type": "library",
-    "license": "-",
+    "license": "MIT",
     "authors": [
         {
-            "name": "Rizqon",
-            "email": "m.rum.rowi.r@gmail.com"
+            "name": "Kalingrowo",
+            "email": "kalingrowo@gmail.com"
         }
     ],
     "minimum-stability": "dev",
     "autoload": {
         "psr-4": {
-            "ArsoftModules\\CodeGenerator\\": "src/"
+            "ArsoftModules\\NotaGenerator\\": "src/"
         }
     },
     "require": {}
