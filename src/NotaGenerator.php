@@ -9,7 +9,7 @@ class NotaGenerator extends Controller {
     /**
      * @return json
      */
-    public function generateNota($tableName)
+    public function generate($tableName)
     {
         $nota = "Oit : " . $tableName;
         return $nota;
