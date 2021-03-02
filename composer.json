@@ -15,5 +15,12 @@
             "ArsoftModules\\NotaGenerator\\": "src/"
         }
     },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "ArsoftModules\\NotaGenerator\\NotaGeneratorServiceProvider"
+            ]
+        }
+    },
     "require": {}
 }
