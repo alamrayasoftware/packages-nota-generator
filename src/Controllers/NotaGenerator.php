@@ -13,6 +13,11 @@ class NotaGenerator {
         $this->result = "";
     }
 
+    public function getResult()
+    {
+        return $this->result;
+    }
+
     /**
      * generate nota
      * 
