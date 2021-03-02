@@ -19,7 +19,10 @@
         "laravel": {
             "providers": [
                 "ArsoftModules\\NotaGenerator\\NotaGeneratorServiceProvider"
-            ]
+            ],
+            "aliases" : {
+                "ArsNotaGenerator": "ArsoftModules\\NotaGenerator\\Facades\\NotaGenerator"
+            }
         }
     },
     "require": {}

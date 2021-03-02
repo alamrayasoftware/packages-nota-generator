@@ -2,6 +2,7 @@
 
 namespace ArsoftModules\NotaGenerator;
 
+use ArsoftModules\NotaGenerator\Controllers\NotaGenerator;
 use Illuminate\Support\ServiceProvider;
 
 class NotaGeneratorServiceProvider extends ServiceProvider
@@ -22,5 +23,8 @@ class NotaGeneratorServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        $this->app->bind('notagenerator', function ($app) {
+            return new NotaGenerator();
+        });
     }
 }

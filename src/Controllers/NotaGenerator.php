@@ -13,11 +13,6 @@ class NotaGenerator {
         $this->result = "";
     }
 
-    public function getResult()
-    {
-        return $this->result;
-    }
-
     /**
      * generate nota
      * 
@@ -28,7 +23,7 @@ class NotaGenerator {
         string $tableName,
         string $columnName,
         int $counterLength,
-        ?string $date
+        string $date
     )
     {
         if (is_null($date)) {
@@ -54,9 +49,24 @@ class NotaGenerator {
         return $this;
     }
 
-    public function addPrefix(string $prefix, string $separator)
+    /**
+     * add prefix to nota
+     * 
+     * @param string $prefix example: 'PRO', 'ORDERS', 'NOTA', etx
+     * @param string $separator example: '-', '/', '.', etc
+     */
+    public function addPrefix(string $prefix, string $separator = '-')
     {
         $this->result = $prefix . $separator . $this->result;
         return $this;
     }
+
+    /**
+     * get generated nota
+     */
+    public function getResult()
+    {
+        return $this->result;
+    }
+
 }
