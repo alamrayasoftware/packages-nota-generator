@@ -32,7 +32,7 @@ class NotaGenerator {
 
         $startCounter = ($counterLength + 11) * -1;
         $lastNota = DB::table($tableName)
-            ->whereRaw('substr(' . $columnName . ', ' . $startCounter . ',10) = ' . $date)
+            ->whereRaw('substr(' . $columnName . ', ' . $startCounter . ', 10) = "' . $date . '"')
             ->get()
             ->last();
         
