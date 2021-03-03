@@ -1,6 +1,6 @@
 <?php
 
-namespace ArsoftModules\NotaGenerator\Controllers;
+namespace ArsoftModules\NotaGenerator;
 
 use Illuminate\Support\Facades\DB;
 

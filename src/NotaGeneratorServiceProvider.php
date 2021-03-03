@@ -2,7 +2,7 @@
 
 namespace ArsoftModules\NotaGenerator;
 
-use ArsoftModules\NotaGenerator\Controllers\NotaGenerator;
+use ArsoftModules\NotaGenerator\NotaGenerator;
 use Illuminate\Support\ServiceProvider;
 
 class NotaGeneratorServiceProvider extends ServiceProvider
