@@ -23,7 +23,7 @@ class NotaGenerator {
         string $tableName,
         string $columnName,
         int $counterLength,
-        string $date
+        string $date = null
     )
     {
         if (is_null($date)) {
