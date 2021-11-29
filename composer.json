@@ -2,7 +2,7 @@
     "name": "arsoft-modules/nota-generator",
     "description": "nota generator using table and database",
     "type": "library",
-    "license": "-",
+    "license": "MIT",
     "authors": [
         {
             "name": "Kalingrowo",
