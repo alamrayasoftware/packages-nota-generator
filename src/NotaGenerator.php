@@ -43,7 +43,7 @@ class NotaGenerator {
         } else {
             $newNumber = 1;
         }
-
+        // if date == false 
         if(!$date){
             $this->result = str_pad($newNumber, $counterLength, '0', STR_PAD_LEFT);
         }else{
