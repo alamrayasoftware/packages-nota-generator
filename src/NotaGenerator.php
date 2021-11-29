@@ -44,7 +44,11 @@ class NotaGenerator {
             $newNumber = 1;
         }
 
-        $this->result = $date . '/' . str_pad($newNumber, $counterLength, '0', STR_PAD_LEFT);
+        if(!$date){
+            $this->result = str_pad($newNumber, $counterLength, '0', STR_PAD_LEFT);
+        }else{
+            $this->result = $date . '/' . str_pad($newNumber, $counterLength, '0', STR_PAD_LEFT);
+        }
 
         return $this;
     }
