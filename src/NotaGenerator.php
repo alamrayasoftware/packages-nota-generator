@@ -4,7 +4,8 @@ namespace ArsoftModules\NotaGenerator;
 
 use Illuminate\Support\Facades\DB;
 
-class NotaGenerator {
+class NotaGenerator
+{
 
     private $result;
 
@@ -16,26 +17,32 @@ class NotaGenerator {
     /**
      * generate nota
      * 
-     * @param $counterLength digits length of counter, ex : 001 -> 3 digits, 00001 -> 5 digits
-     * @param $date (nullable) format: Y/m/d
+     * @param string $tableName
+     * @param string $columnName
+     * @param int $counterLength digits length of counter, ex : 001 -> 3 digits, 00001 -> 5 digits
+     * @param string|carbon|null $date format: Y/m/d
+     * 
+     * @return string eg: PRO/2021/12/23/0001, PRO/0001
      */
     public function generate(
         string $tableName,
         string $columnName,
         int $counterLength,
         string $date = null
-    )
-    {
-        if (is_null($date)) {
-            $date = date('Y/m/d');
+    ) {
+        $startCounter = ($counterLength + 11) * -1;
+        if ($date) {
+            $date = now()->parse($date)->format('Y/m/d');
+            $lastNota = DB::table($tableName)
+                ->whereRaw('substr(' . $columnName . ', ' . $startCounter . ', 10) = "' . $date . '"')
+                ->latest($columnName)
+                ->first();
+        } else {
+            $lastNota = DB::table($tableName)
+                ->latest($columnName)
+                ->first();
         }
 
-        $startCounter = ($counterLength + 11) * -1;
-        $lastNota = DB::table($tableName)
-            ->whereRaw('substr(' . $columnName . ', ' . $startCounter . ', 10) = "' . $date . '"')
-            ->get()
-            ->last();
-        
         if (!is_null($lastNota)) {
             $lastNota = $lastNota->$columnName;
             $lastNumber = (int) substr($lastNota, ($counterLength * -1));
@@ -43,10 +50,10 @@ class NotaGenerator {
         } else {
             $newNumber = 1;
         }
-        // if date == false 
-        if(!$date){
+
+        if (!$date) {
             $this->result = str_pad($newNumber, $counterLength, '0', STR_PAD_LEFT);
-        }else{
+        } else {
             $this->result = $date . '/' . str_pad($newNumber, $counterLength, '0', STR_PAD_LEFT);
         }
 
@@ -56,7 +63,7 @@ class NotaGenerator {
     /**
      * add prefix to nota
      * 
-     * @param string $prefix example: 'PRO', 'ORDERS', 'NOTA', etx
+     * @param string $prefix example: 'PRO', 'ORDERS', 'NOTA', etc
      * @param string $separator example: '-', '/', '.', etc
      */
     public function addPrefix(string $prefix, string $separator = '-')
@@ -72,5 +79,4 @@ class NotaGenerator {
     {
         return $this->result;
     }
-
 }
